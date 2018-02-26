@@ -57,6 +57,7 @@ function WithForm (WrapComponent: any, formName: string, api: Function) {
                     serverError={this.state.error}
                     loading={this.state.submitting} 
                     handleSubmit={this.handleSubmit}
+                    {...this.props}
                 />                               
             );
         }

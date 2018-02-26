@@ -16,7 +16,7 @@ const InputField = (props) => {
         <View>
             <Item floatingLabel error={hasError? true : false}>
                 <Label>{label}</Label>
-                <Input {...input} />
+                <Input {...input} {...props} />
             </Item>
             {errorComponent}
         </View>

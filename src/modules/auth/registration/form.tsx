@@ -14,11 +14,9 @@ interface Props {
     loading: boolean;
     invalid?: boolean;
     serverError?: string;
-    onForgotPassword: ()=> void;
-    onRegister: ()=> void;
 }
 
-const LoginForm = (props: Props) => {
+const RegistrationForm = (props: Props) => {
     const { handleSubmit, pristine, loading, invalid, serverError } = props;
     const submitDisabled = pristine || loading || invalid;
 
@@ -39,22 +37,25 @@ const LoginForm = (props: Props) => {
                 component={InputField} 
                 label="Password"
             />
+            <Field
+                validate={[ValidationService.required, ValidationService.minLength8, ValidationService.comparePasswords]}
+                name="confirmPassword"
+                type="password"
+                secureTextEntry={true}
+                component={InputField} 
+                label="Re-enter Password"
+            />
             <Clearfix/>
-            <Link onPress={props.onForgotPassword}> Forgot Password ? </Link>
             <Clearfix/> 
             <LoadingButton
                 onPress={props.handleSubmit} 
                 disabled={submitDisabled} 
                 isLoading={loading}
                 >
-                Login
+                Register
             </LoadingButton>
-            <Clearfix/>
-            <Button onPress={props.onRegister} bordered block style={{marginHorizontal: 16}}>
-                <Text>Register</Text> 
-            </Button>
         </Form>
     );
 };
 
-export default WithForm(LoginForm, 'loginForm', AuthService.login);
+export default WithForm(RegistrationForm, 'registrationForm', AuthService.registration);
