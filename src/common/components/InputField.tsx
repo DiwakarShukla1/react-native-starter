@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Input, Label, Item, Text } from "native-base";
+import { Colors } from '../config';
 
 const styles = StyleSheet.create({
     clearfix : {
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
 const InputField = (props) => {
     const {input, label, placeholder, type, required, meta: { touched, error, warning }} = props;
     const hasError = touched && error;
-    const errorComponent = hasError ? <Text style={{marginLeft: 16, color: 'red'}}>{error}</Text> : null;
+    const errorComponent = hasError ? <Text style={{marginLeft: 16, color: Colors.colorDanger}}>{error}</Text> : null;
     return (
         <View>
             <Item floatingLabel error={hasError? true : false}>
