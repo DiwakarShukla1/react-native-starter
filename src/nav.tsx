@@ -1,5 +1,5 @@
 import { StackNavigator } from "react-navigation";
-import { Login, Registration } from "./modules/auth";
+import { Login, Registration, ForgotPassword, ResetPassword} from "./modules/auth";
 
 const RootStack = StackNavigator({
     Login: {
@@ -7,6 +7,12 @@ const RootStack = StackNavigator({
     },
     Registration : {
         screen : Registration
+    },
+    ForgotPassword : {
+        screen:ForgotPassword
+    },
+    ResetPassword : {
+        screen:ResetPassword
     }
 });
 
