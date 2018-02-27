@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Keyboard} from 'react-native';
 import { headers } from "../../../common/config";
 import { Clearfix, LoadingButton } from "../../../common/components";
 import { Container, Content } from "native-base";
@@ -37,7 +37,8 @@ export default class Login extends React.Component <Props, State> {
     }
 
     handleOnForgotPassword () {
-
+        Keyboard.dismiss();
+        this.props.navigation.navigate("ForgotPassword")
     }
 
     render () {
