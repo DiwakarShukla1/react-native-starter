@@ -2,7 +2,8 @@ const obj = {
     btnLabel: {
         BackToLogin : "BACK TO LOGIN",
         Submit : 'SUBMIT',
-        ResetPassword:'RESET PASSWORD'
+        ResetPassword:'RESET PASSWORD',
+        Save:'SAVE'
     }
 }
 
