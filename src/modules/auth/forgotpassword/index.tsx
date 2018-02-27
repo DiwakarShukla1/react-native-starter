@@ -10,12 +10,12 @@ class ForgotPassword extends Component {
         return (
             <Form 
                 onLoginPress={this.handleLoginPress.bind(this)}
-                handleSuccess={this.handleSubmitEmail.bind(this)}/>
+                onSuccess={this.handleSubmitEmail.bind(this)}/>
         );
     }
 
     handleLoginPress() {
-        this.props.navigation.goBack();
+        this.props.navigation.goBack();       
     }
 
     handleSubmitEmail() {

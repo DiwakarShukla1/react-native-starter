@@ -8,7 +8,7 @@ import {AuthService, ValidationService} from '../../../common/services';
 import {labels} from '../../../common/constants';
 
 const ForgotForm = (props) => {
-    const {loading} = props
+   const {loading} = props
    return( 
         <Container>
              <Content>
