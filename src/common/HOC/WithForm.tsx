@@ -34,7 +34,7 @@ function WithForm (WrapComponent: any, formName: string, api: Function) {
         }
     
         async handleSubmit (invalid) {
-            if (invalid === false) return;
+            if (invalid === true) return;
 
             const values = this.props.data.values;
             this.setState({ submitting : true, error : undefined });
