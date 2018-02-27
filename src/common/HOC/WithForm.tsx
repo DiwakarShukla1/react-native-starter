@@ -8,6 +8,7 @@ interface Props {
     data: any;
     header: string;
     onSuccess: () => {};
+    invalid?: boolean;
 }
 
 interface State {
@@ -32,7 +33,9 @@ function WithForm (WrapComponent: any, formName: string, api: Function) {
             this.handleSubmit = this.handleSubmit.bind(this);
         }
     
-        async handleSubmit () {
+        async handleSubmit (invalid) {
+            if (invalid === false) return;
+
             const values = this.props.data.values;
             this.setState({ submitting : true, error : undefined });
     
