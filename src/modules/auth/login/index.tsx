@@ -37,7 +37,7 @@ export default class Login extends React.Component <Props, State> {
     }
 
     handleOnForgotPassword () {
-
+        
     }
 
     render () {

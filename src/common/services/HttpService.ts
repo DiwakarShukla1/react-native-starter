@@ -4,7 +4,9 @@ import { AsyncStorage } from "react-native";
 
 enum METHODS {
     GET = 'GET',
-    POST = 'POST'
+    POST = 'POST',
+    PUT = 'PUT',
+    DELETE = 'DELETE'
 }
 
 const doHttpCall = async (url: string, method: string, body?: object, doNotUseToken?: boolean): Promise<ServerResponse> => {
@@ -43,7 +45,10 @@ const obj = {
     },
     post (url: string, body: object, doNotUseToken?: boolean): Promise<ServerResponse> {
         return doHttpCall(url, METHODS.POST, body, doNotUseToken);
-    }
+    },
+    put (url: string, body: object, doNotUseToken?: boolean): Promise<ServerResponse> {
+        return doHttpCall(url, METHODS.PUT, body, doNotUseToken);
+    },
 };
 
 export default obj;
