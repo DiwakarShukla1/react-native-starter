@@ -5,18 +5,18 @@ import {customStyles, StepLabels, WizardItems} from './wizardConfig';
 import {headers} from '../../common/config';
 
 class ProfitoWizard extends Component {
-    static navigationOptions = headers("Profile");
+    static navigationOptions ={header:null};
     state = {currentPosition:0}
 
     render() {
         const wizardItem = WizardItems[this.state.currentPosition];
         return (
             <View style={{flex:1}}>
-                <View style={{height:100,marginTop:16}}>
+                <View style={{height:60,marginTop:16}}>
                     <StepIndicator
                         onPress={this.onPageChange.bind(this)}
                         customStyles={customStyles}
-                        currentPosition={3}
+                        currentPosition={this.state.currentPosition}
                         labels={StepLabels}
                     />
                 </View>
