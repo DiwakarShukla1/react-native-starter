@@ -29,3 +29,26 @@ export interface ServerResponse {
     message?: string;
     data: any;
 }
+
+export interface ProfileObj {
+    contactNumber : string,
+    facebook?: string,
+    twitter?: string,
+    google?: string,
+    linkedIn? : string,
+    profilePicURL? : string,
+    idPicURL?: string,
+    firstName: string,
+    lastName : string,
+    address : string,
+    buildingSize : number,
+    yearOfBuildingConstruction : number,
+    stateOfResidence : string,
+    nameOfOwner? : string,
+    contactNumberOfOwner? : string,
+    emailOfOwner? : string
+}
+
+export interface StepObj {
+    step : number
+} 
