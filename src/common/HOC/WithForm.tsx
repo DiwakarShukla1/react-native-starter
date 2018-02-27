@@ -19,7 +19,8 @@ interface State {
 function WithForm (WrapComponent: any, formName: string, api: Function) {
     
     const WithReduxForm = reduxForm({
-        form: formName
+        form: formName,
+        enableReinitialize : true
     })(WrapComponent);
     
     class SmartFormComponent extends React.Component <Props, State> {
