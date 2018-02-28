@@ -17,3 +17,8 @@ const comparePasswordsFunc = fieldName => (value, fields) => {
   return value === fields[fieldName] ? undefined : 'Password and confirm password do not match.';
 };
 export const comparePasswords = comparePasswordsFunc('password');
+
+export const url = url =>
+  url &&  /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(url)
+  ? "Invalid URL"
+  : undefined;

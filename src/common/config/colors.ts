@@ -4,7 +4,8 @@ const obj = {
     colorAccent : '#FF4081',
     white : "#fff",
     colorSuccess : "#00B386",
-    colorDanger : "#D9534F"
+    colorDanger : "#D9534F",
+    colorGray:'#898888'
 };
 
 export default obj;
