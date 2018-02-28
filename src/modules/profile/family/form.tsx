@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { Link, Clearfix, LoadingButton, InputField, Error, PickerField} from '../../../common/components';
+import { Link, Clearfix, LoadingButton, InputField, Error, PickerField, FormDatePicker, CheckBox} from '../../../common/components';
 import { ValidationService, ProfileService } from '../../../common/services';
 import { WithForm } from '../../../common/HOC';
 import {labels} from '../../../common/constants';
@@ -37,8 +37,14 @@ const FamilyForm = (props) => {
                     <Field 
                         validate={[ValidationService.required]}
                         name="dateOfBirth"
-                        component={InputField} 
+                        component={FormDatePicker} 
                         label="Date Of Birth"/>
+                    <Field 
+                        validate={[]}
+                        name="isStudent"
+                        component={CheckBox}
+                        boxText="Is Student" 
+                        label="Occupation"/>
                     {/* // "isStudent" : true, */}
                     <Field 
                         validate={[ValidationService.required]}

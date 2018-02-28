@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import Form from './form';
+import {DatePickerAndroid} from 'react-native';
 
-class FamilyInfo extends Component {
+interface Props {
+    onSuccess:()=>{};
+}
+class FamilyInfo extends Component<Props> {
+
     render() {
         return (
-            <Form/>
+            <Form
+                onSuccess={this.handleAddFamilySuccess.bind(this)}
+            />
         );
+    }
+
+    handleAddFamilySuccess(message) {
+
     }
 }
 
