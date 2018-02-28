@@ -53,7 +53,7 @@ export interface StepObj {
     step : number
 } 
 
-export interface FamilyMemberObj {
+export interface FarmObj {
     firstName : string,
     lastName : string,
     relationWithYou : string,
