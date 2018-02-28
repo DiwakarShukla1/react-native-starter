@@ -7,7 +7,7 @@ import {labels} from '../../../common/constants';
 import { Form, Button, Text, Container, Content, View} from "native-base";
 
 
-const pickerItems = [{label:"Rented",value:"rented"},{label:"Owner",value:"owner"}];
+const pickerItems = [{label:"Rented",value:"Rented"},{label:"Owned",value:"Owned"}];
 
 const PersonalForm = (props) => {
     const { handleSubmit, pristine, loading, invalid, serverError } = props;
