@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import {View, Text} from 'react-native'
+import Form from './form';
 
 class FamilyInfo extends Component {
     render() {
         return (
-            <View>
-                <Text>Family Info</Text>
-            </View>
+            <Form/>
         );
     }
 }
