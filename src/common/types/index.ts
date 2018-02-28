@@ -42,6 +42,7 @@ export interface ProfileObj {
     lastName : string,
     address : string,
     buildingSize : number,
+    buildingName: string,
     yearOfBuildingConstruction : number,
     stateOfResidence : string,
     nameOfOwner? : string,
