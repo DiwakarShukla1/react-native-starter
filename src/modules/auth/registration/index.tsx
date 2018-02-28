@@ -18,7 +18,8 @@ export default class Registration extends React.Component <Props, State> {
     static navigationOptions = headers("Registration");
 
     state = {
-        registered : false
+        registered : false,
+        successMessage:''
     };
 
     constructor(props) {
@@ -27,8 +28,8 @@ export default class Registration extends React.Component <Props, State> {
         this.handleOnLogin = this.handleOnLogin.bind(this);
     }
 
-    handleSuccess () {
-        this.setState({registered : true});
+    handleSuccess (successMessage) {
+        this.setState({registered : true,successMessage});
     }
 
     componentDidCatch(error, info) {
@@ -43,7 +44,7 @@ export default class Registration extends React.Component <Props, State> {
         const registration = !this.state.registered ? (
             <RegistrationForm
                 onSuccess={this.handleSuccess} 
-            />) : <RegistrationSuccess/>;
+            />) : <RegistrationSuccess successMessage={this.state.successMessage}/>;
 
         return (
             <Container>
