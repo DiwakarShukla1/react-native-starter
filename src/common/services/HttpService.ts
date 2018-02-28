@@ -49,6 +49,9 @@ const obj = {
     put (url: string, body: object, doNotUseToken?: boolean): Promise<ServerResponse> {
         return doHttpCall(url, METHODS.PUT, body, doNotUseToken);
     },
+    delete (url: string) {
+        return doHttpCall(url, METHODS.DELETE);
+    }
 };
 
 export default obj;

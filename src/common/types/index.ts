@@ -52,3 +52,16 @@ export interface ProfileObj {
 export interface StepObj {
     step : number
 } 
+
+export interface FamilyMemberObj {
+    firstName : string,
+    lastName : string,
+    relationWithYou : string,
+    dateOfBirth : Date,
+    isStudent : boolean,
+    nameOfSchool? : string,
+    gradeOfSchool? : string,
+    occupation? : string,
+    highestEducation? : string,
+    lastInstituteAttended? : string
+}
