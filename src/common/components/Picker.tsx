@@ -14,16 +14,16 @@ const PickerField = (props) => {
     const hasError = touched && error;
     const errorComponent = hasError ? <Text style={{marginLeft: 16, color: Colors.colorDanger}}>{error}</Text> : null;
     const items = pickerItems.map((m)=>{
-        return <Item label={m.label} value={m.value} />
+        return <Item style={{paddingLeft:0}} label={m.label} value={m.value} />
     }) 
     return (
-        <View>
+        <View style={{marginLeft:16,marginTop:16}}>
             <Picker
             mode="dropdown"
             placeholder="Select One"
-            selectedValue={props.selected2}
-            onValueChange={props.onValueChange}
-            >          
+            {...input} selectedValue={input.value} onValueChange={(value) => input.onChange(value)} children={props.children}
+            >         
+            {items} 
           </Picker>
             {errorComponent}
         </View>
