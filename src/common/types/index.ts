@@ -42,6 +42,7 @@ export interface ProfileObj {
     lastName : string,
     address : string,
     buildingSize : number,
+    buildingName: string,
     yearOfBuildingConstruction : number,
     stateOfResidence : string,
     nameOfOwner? : string,
@@ -53,7 +54,7 @@ export interface StepObj {
     step : number
 } 
 
-export interface FamilyMemberObj {
+export interface FarmObj {
     firstName : string,
     lastName : string,
     relationWithYou : string,
@@ -64,4 +65,26 @@ export interface FamilyMemberObj {
     occupation? : string,
     highestEducation? : string,
     lastInstituteAttended? : string
+}
+
+enum Ownership {
+    OWN = "Own",
+    RENTED = "Rented"
+}
+
+interface Crop  {
+    name : string,
+    size : number,
+    association : string,
+}
+
+export interface FarmObj {
+    description : string,
+    size : number,
+    dateOfStartedWorkingOnLand : Date,
+    typeOfOwnership : Ownership,
+    ownerName : string,
+    contactNumberOfOwner : string,
+    emailOfOwner : string,
+    crops : Crop[],
 }
