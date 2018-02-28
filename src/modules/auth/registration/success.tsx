@@ -7,7 +7,7 @@ interface Props {
 }
 
 const RegistrationSuccess = (props: Props) => {
-    return <Text style={{color : Colors.colorSuccess, marginHorizontal : 16}}>Registration success !!</Text>
+    return <Text style={{color : Colors.colorSuccess, marginHorizontal : 16}}>{props.successMessage}</Text>
 };
 
 export default RegistrationSuccess;
