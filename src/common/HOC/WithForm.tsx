@@ -43,7 +43,7 @@ function WithForm (WrapComponent: any, formName: string, api: Function) {
             try {
                 const result = await api(values);
                 if (result.success) {
-                    this.props.onSuccess();
+                    this.props.onSuccess(result.message);
                 } else {
                     Snackbar.show({title : result.message, duration : Snackbar.LENGTH_INDEFINITE , action : { title : "DISMISS", color : "green" }});
                 }

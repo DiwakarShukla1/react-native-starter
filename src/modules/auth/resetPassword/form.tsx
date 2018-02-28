@@ -15,7 +15,7 @@ const ResetForm = (props)=>{
             <Content>
                 <Form>
                     <Field 
-                        validate={[ValidationService.required]}
+                        validate={[ValidationService.required, ValidationService.minLength6]}
                         name="otp"
                         autoFocus={true} 
                         component={InputField} 
@@ -34,6 +34,7 @@ const ResetForm = (props)=>{
                         secureTextEntry={true}
                         label="Confirm Password"/>
                 </Form>
+                <Clearfix/>
                 <LoadingButton
                         onPress={props.handleSubmit} 
                         disabled={submitDisabled} 
