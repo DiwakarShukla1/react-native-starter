@@ -42,12 +42,14 @@ function WithForm (WrapComponent: any, formName: string, api: Function) {
     
             try {
                 const result = await api(values);
+                console.log("form submission success",result)
                 if (result.success) {
                     this.props.onSuccess(result.message);
                 } else {
                     Snackbar.show({title : result.message, duration : Snackbar.LENGTH_INDEFINITE , action : { title : "DISMISS", color : "green" }});
                 }
             } catch (error) {
+                console.log("form error",error)
                 Snackbar.show({title : error.message, duration : Snackbar.LENGTH_INDEFINITE , action : { title : "DISMISS", color : "green" }});                
             } finally {
                 this.setState({submitting : false});

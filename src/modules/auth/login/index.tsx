@@ -4,6 +4,7 @@ import { headers } from "../../../common/config";
 import { Clearfix, LoadingButton } from "../../../common/components";
 import { Container, Content } from "native-base";
 import LoginForm from "./form";
+import {NavigationActions} from 'react-navigation';
 
 interface Props {
     navigation : any;
@@ -25,7 +26,13 @@ export default class Login extends React.Component <Props, State> {
     }
 
     handleSuccess () {
-        this.props.navigation.navigate("Registration");
+        const navigate = NavigationActions.reset({
+            index:0,
+            actions:[
+                NavigationActions.navigate({routeName:"ProfileWizard"})
+            ]
+        })
+        this.props.navigation.dispatch(navigate);
     }
 
     componentDidCatch(error, info) {
