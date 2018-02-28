@@ -3,14 +3,20 @@ import {View, Text} from 'react-native';
 import Field from 'redux-form';
 import {WithForm} from '../../../common/HOC';
 import Form from './form';
-import {Container, Content, Form} from 'native-base';
+import {connect} from 'react-redux';
 
 class PersonalInfo extends Component {
     render() {
         return (
-            <Form initialValues={{email:"patilrevansiddh@fmail.com"}} />
+            <Form
+                formData={this.props.formData} 
+                initialValues={{email:"patilrevansiddh@gmail.com"}} />
         );
     }
 }
 
-export default PersonalInfo;
+const mapStateToProps = (state)=>({
+    formData : state.form.personalForm
+});
+
+export default connect(mapStateToProps)(PersonalInfo);

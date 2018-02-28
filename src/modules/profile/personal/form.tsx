@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { Link, Clearfix, LoadingButton, InputField, Error } from '../../../common/components';
-import { ValidationService, AuthService } from '../../../common/services';
+import { Link, Clearfix, LoadingButton, InputField, Error, PickerField} from '../../../common/components';
+import { ValidationService, ProfileService } from '../../../common/services';
 import { WithForm } from '../../../common/HOC';
 import {labels} from '../../../common/constants';
 import { Form, Button, Text, Container, Content, View} from "native-base";
@@ -18,13 +18,13 @@ const PersonalForm = (props) => {
             <Content>
                 <Form>
                     <Field 
-                        validate={[ValidationService.required, ValidationService.email]}
+                        validate={[ValidationService.required]}
                         name="firstName"
                         autoFocus={true} 
                         component={InputField} 
                         label="First Name" />
                     <Field
-                        validate={[ValidationService.required, ValidationService.email]}
+                        validate={[ValidationService.required]}
                         name="lastName"
                         component={InputField} 
                         label="Last Name" />
@@ -60,16 +60,12 @@ const PersonalForm = (props) => {
                         name="yearOfBuildingConstruction"
                         component={InputField} 
                         label="Year of Building Construction" />
-                    <Field 
-                        validate={[ValidationService.required]}
+                    <Field
+                        pickerItems={pickerItems}   
                         name="stateOfResidence"
-                        component={InputField} 
-                        label="State Of Residence" />
-
-                    {/* <Field
-                        pickerItems={pickerItems}
-                        name="State of Residence"
-                        /> */}
+                        label="State of Residence"
+                        component={PickerField}
+                        /> 
                     <Field 
                         validate={[ValidationService.required]}
                         name="nameOfOwner"
@@ -85,7 +81,7 @@ const PersonalForm = (props) => {
                         name="emailOfOwner"
                         component={InputField} 
                         label="Email Of Owner" />
-                    <Clearfix/>            
+                    <Clearfix/>
                     <LoadingButton
                         onPress={props.handleSubmit} 
                         disabled={submitDisabled} 
@@ -93,6 +89,7 @@ const PersonalForm = (props) => {
                         >
                         {labels.btnLabel.Save}
                     </LoadingButton>
+                    <Clearfix/>
                 </Form>
             </Content>
         </Container>
@@ -108,4 +105,4 @@ const Fields = (props)=>{
     })   
     return fields
 }
-export default WithForm(PersonalForm,"personalForm",AuthService.forgotPassword);
+export default WithForm(PersonalForm,"personalForm", ProfileService.updateProfile);
