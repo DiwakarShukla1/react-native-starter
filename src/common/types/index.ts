@@ -65,3 +65,25 @@ export interface FamilyMemberObj {
     highestEducation? : string,
     lastInstituteAttended? : string
 }
+
+enum Ownership {
+    OWN = "Own",
+    RENTED = "Rented"
+}
+
+interface Crop  {
+    name : string,
+    size : number,
+    association : string,
+}
+
+export interface FarmObj {
+    description : string,
+    size : number,
+    dateOfStartedWorkingOnLand : Date,
+    typeOfOwnership : Ownership,
+    ownerName : string,
+    contactNumberOfOwner : string,
+    emailOfOwner : string,
+    crops : Crop[],
+}
