@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import {Text} from 'native-base';
-import {View} from 'react-native';
+import {View, Keyboard} from 'react-native';
 import {headers} from '../../../common/config';
 import Form from './form';
+import {NavigationActions} from 'react-navigation';
+import * as SnackBar from "react-native-snackbar";
+const Snackbar = SnackBar.default;
 
 class ResetPassword extends Component {
     static navigationOptions = headers("Reset Password");
@@ -15,11 +18,26 @@ class ResetPassword extends Component {
     }
 
     handleLoginPress() {
-
+        Keyboard.dismiss();
+        const navigate = NavigationActions.reset({
+            index:0,
+            actions:[
+                NavigationActions.navigate({routeName:'Login'})
+            ]
+        });
+        this.props.navigation.dispatch(navigate)
     }
 
-    handleResetPress() {
-
+    handleResetPress(successMessage) {
+        Keyboard.dismiss();
+        Snackbar.show({title : successMessage, duration : Snackbar.LENGTH_INDEFINITE , action : { title : "DISMISS", color : "green" }});
+        const navigate = NavigationActions.reset({
+            index:0,
+            actions:[
+                NavigationActions.navigate({routeName:'Login'})
+            ]
+        });
+        this.props.navigation.dispatch(navigate)
     }
 }
 

@@ -6,6 +6,9 @@ import { WithForm } from '../../../common/HOC';
 import {labels} from '../../../common/constants';
 import { Form, Button, Text, Container, Content, View} from "native-base";
 
+
+const pickerItems = [{label:"Rented",value:"rented"},{label:"Owner",value:"owner"}];
+
 const PersonalForm = (props) => {
     const { handleSubmit, pristine, loading, invalid, serverError } = props;
     const submitDisabled = pristine || loading || invalid;
@@ -20,11 +23,12 @@ const PersonalForm = (props) => {
                         autoFocus={true} 
                         component={InputField} 
                         label="First Name" />
-                    <Field 
+                    <Field
                         validate={[ValidationService.required, ValidationService.email]}
                         name="lastName"
                         component={InputField} 
                         label="Last Name" />
+                    
                     <Field 
                         validate={[ValidationService.required, ValidationService.email]}
                         name="email"
@@ -32,52 +36,56 @@ const PersonalForm = (props) => {
                         component={InputField} 
                         label="Email" />
                     <Field 
-                        validate={[ValidationService.required, ValidationService.email]}
+                        validate={[ValidationService.required]}
                         name="contactNumber"
                         component={InputField} 
                         label="Contact Number"/>
                     <Field 
-                        validate={[ValidationService.required, ValidationService.email]}
+                        validate={[ValidationService.required]}
                         name="address"
                         component={InputField} 
                         label="Address" />
                     <Field 
-                        validate={[ValidationService.required, ValidationService.email]}
+                        validate={[ValidationService.required]}
                         name="buildingName"
                         component={InputField} 
                         label="Building Name" />
                     <Field 
-                        validate={[ValidationService.required, ValidationService.email]}
+                        validate={[ValidationService.required]}
                         name="buildingSize"
                         component={InputField} 
                         label="Building Size" />
                     <Field 
-                        validate={[ValidationService.required, ValidationService.email]}
+                        validate={[ValidationService.required]}
                         name="yearOfBuildingConstruction"
                         component={InputField} 
-                        label="First Name" />
+                        label="Year of Building Construction" />
                     <Field 
-                        validate={[ValidationService.required, ValidationService.email]}
+                        validate={[ValidationService.required]}
                         name="stateOfResidence"
                         component={InputField} 
                         label="State Of Residence" />
 
-                    {/* dropDown/ */}
+                    {/* <Field
+                        pickerItems={pickerItems}
+                        name="State of Residence"
+                        /> */}
                     <Field 
-                        validate={[ValidationService.required, ValidationService.email]}
+                        validate={[ValidationService.required]}
                         name="nameOfOwner"
                         component={InputField} 
                         label="Name of Owner" />
-                     <Field 
-                        validate={[ValidationService.required, ValidationService.email]}
+                    <Field 
+                        validate={[ValidationService.required]}
                         name="contactNumberOfOwner"
                         component={InputField} 
                         label="Contact Number of Owner" />
                     <Field 
-                        validate={[ValidationService.required, ValidationService.email]}
+                        validate={[ValidationService.required]}
                         name="emailOfOwner"
                         component={InputField} 
                         label="Email Of Owner" />
+                    <Clearfix/>            
                     <LoadingButton
                         onPress={props.handleSubmit} 
                         disabled={submitDisabled} 
@@ -90,5 +98,14 @@ const PersonalForm = (props) => {
         </Container>
     );
 };
-
+const Fields = (props)=>{
+    const fields = props.fields.map((m)=>{
+        return  <Field 
+                    validate={[ValidationService.required]}
+                    name={m.name}
+                    component={InputField} 
+                    label={m.label} />
+    })   
+    return fields
+}
 export default WithForm(PersonalForm,"personalForm",AuthService.forgotPassword);
