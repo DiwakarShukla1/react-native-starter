@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import { Link, Clearfix, LoadingButton, InputField, Error, PickerField, FormDatePicker, CheckBox} from '../../../common/components';
-import { ValidationService, ProfileService } from '../../../common/services';
+import { ValidationService, FamilyMemberService } from '../../../common/services';
 import { WithForm } from '../../../common/HOC';
 import {labels} from '../../../common/constants';
 import { Form, Button, Text, Container, Content, View} from "native-base";
@@ -26,8 +26,7 @@ const FamilyForm = (props) => {
                         validate={[ValidationService.required]}
                         name="lastName"
                         component={InputField} 
-                        label="Last Name" />
-                    
+                        label="Last Name" />                    
                     <Field 
                         validate={[ValidationService.required]}
                         name="relationWithYou"
@@ -40,7 +39,7 @@ const FamilyForm = (props) => {
                         component={FormDatePicker} 
                         label="Date Of Birth"/>
                     <Field 
-                        validate={[]}
+                        // validate={[]}
                         name="isStudent"
                         component={CheckBox}
                         boxText="Is Student" 
@@ -71,4 +70,4 @@ const FamilyForm = (props) => {
     );
 };
 
-export default WithForm(FamilyForm,"familyForm", ProfileService.updateProfile);
+export default WithForm(FamilyForm,"familyForm", FamilyMemberService.updateFamilyMember);
