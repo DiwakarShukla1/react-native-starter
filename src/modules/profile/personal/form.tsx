@@ -81,6 +81,21 @@ const PersonalForm = (props) => {
                         name="emailOfOwner"
                         component={InputField} 
                         label="Email Of Owner" />
+                    <Field 
+                        validate={[ValidationService.url]}
+                        name="facebook"
+                        component={InputField} 
+                        label="Facebook Link" />
+                    <Field 
+                        validate={[ValidationService.url]}
+                        name="twitter"
+                        component={InputField} 
+                        label="Twitter Link" />
+                    <Field 
+                        validate={[ValidationService.url]}
+                        name="google"
+                        component={InputField} 
+                        label="Google Link" />
                     <Clearfix/>
                     <LoadingButton
                         onPress={props.handleSubmit} 
