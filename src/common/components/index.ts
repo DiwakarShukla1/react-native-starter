@@ -6,5 +6,10 @@ import Link from "./Link";
 import PickerField from './Picker';
 import FormDatePicker from './fieldComponents/datePicker';
 import CheckBox from './fieldComponents/Checkbox';
+import ImageUploader from './fieldComponents/uploader'
 
-export { LoadingButton, Clearfix, InputField, Error, Link, PickerField, FormDatePicker, CheckBox};
+export { 
+    LoadingButton, Clearfix, InputField, 
+    Error, Link, PickerField, FormDatePicker, CheckBox,
+    ImageUploader
+};
