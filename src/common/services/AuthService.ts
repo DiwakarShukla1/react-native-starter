@@ -1,8 +1,13 @@
 import { RegistrationObj, Credentials, ServerResponse, ResetPassword, ForgotPassword } from './../types/index';
 import HttpService from './HttpService';
-import { AsyncStorage } from "react-native";
+import { AsyncStorage } from 'react-native';
 
 const obj = {
+    async hasToken() {
+        const token = await AsyncStorage.getItem('apiToken');
+        console.log("token", token);
+        return token !== null ? true : false;
+    },
     registration (registration: RegistrationObj) {
         const url = 'users';
         return HttpService.post(url, registration, true);

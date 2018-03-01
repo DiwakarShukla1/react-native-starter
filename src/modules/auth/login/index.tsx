@@ -5,6 +5,7 @@ import { Clearfix, LoadingButton } from "../../../common/components";
 import { Container, Content } from "native-base";
 import LoginForm from "./form";
 import {NavigationActions} from 'react-navigation';
+import { AuthService } from '../../../common/services';
 
 interface Props {
     navigation : any;
@@ -46,6 +47,13 @@ export default class Login extends React.Component <Props, State> {
     handleOnForgotPassword () {
         Keyboard.dismiss();
         this.props.navigation.navigate("ForgotPassword")
+    }
+
+    async componentWillMount () {
+        const hasToken = await AuthService.hasToken();
+        if (hasToken) {
+            this.handleSuccess();
+        }
     }
 
     render () {
