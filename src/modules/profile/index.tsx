@@ -20,7 +20,7 @@ class ProfitoWizard extends Component {
             }
             this.setState({currentPosition});
         } catch (error) {
-            console.log("response",error)
+            console.log("response error",error)
         }
 
     }
