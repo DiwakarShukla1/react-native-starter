@@ -70,4 +70,4 @@ const FamilyForm = (props) => {
     );
 };
 
-export default WithForm(FamilyForm,"familyForm", FamilyMemberService.updateFamilyMember);
+export default WithForm(FamilyForm,"familyForm", FamilyMemberService.createFamilyMember, FamilyMemberService.updateFamilyMember);
