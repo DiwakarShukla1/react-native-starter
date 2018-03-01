@@ -16,7 +16,7 @@ interface State {
     error: string;
 }
 
-function WithForm (WrapComponent: any, formName: string, api: Function) {
+function WithForm (WrapComponent: any, formName: string, createApi: Function, updateApi?: Function) {
     
     const WithReduxForm = reduxForm({
         form: formName,
@@ -41,8 +41,7 @@ function WithForm (WrapComponent: any, formName: string, api: Function) {
             this.setState({ submitting : true, error : undefined });
     
             try {
-                const result = await api(values);
-                console.log("form submission success",result)
+                const result = this.props.id ? await updateApi(this.props.id, values) : await createApi(values);
                 if (result.success) {
                     this.props.onSuccess(result.message);
                 } else {
