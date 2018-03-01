@@ -10,16 +10,16 @@ class FormDatePicker extends Component {
         const {input, label, placeholder, type, required, meta: { touched, error, warning }} = this.props;
         const hasError = touched && error;
         const errorComponent = hasError ? <Text style={{marginLeft: 16, color: Colors.colorDanger}}>{error}</Text> : null;
-        const selectedDate = input.value ? input.value :"Select DOB";
+        const selectedDate = input.value ? moment(input.value).format("DD/MM/YY") :"Select DOB";
 
         return (
-            <View style={{marginLeft:16,marginTop:10}}>
+            <Item stackedLabel>
                 <Label>{label}</Label>
-                <TouchableOpacity onPress={this.handleDatePicker.bind(this)}>
-                    <Text style={{marginTop:8,color: selectedDate=="Select DOB" ? Colors.colorGray : '#000'}}>{selectedDate}</Text>
+                <TouchableOpacity style={{paddingTop:12,alignSelf:'flex-start'}} onPress={this.handleDatePicker.bind(this)}>
+                    <Text style={{color: selectedDate=="Select DOB" ? Colors.colorGray : '#000'}}>{selectedDate}</Text>
                 </TouchableOpacity>
                 {errorComponent}
-            </View>
+            </Item>
         );
     }
     async handleDatePicker() {
@@ -27,12 +27,13 @@ class FormDatePicker extends Component {
             const datemin = moment().toDate();  
             const {action, year, month, day} = await DatePickerAndroid.open({ 
                 maxDate:datemin,
+                date:moment(this.props.input.value).toDate(),
                 mode : 'spinner'
             });
             if(action !== DatePickerAndroid.dismissedAction) {
                 const dob = `${day}/${month+1}/${year}`
                 this.setState({selectedDob:dob});
-                this.props.input.onChange(dob);
+                this.props.input.onChange(moment(dob).format("YYYY/MM/DD"));
             }
         } catch (error) {
             console.log(error)

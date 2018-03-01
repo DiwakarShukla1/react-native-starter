@@ -1,6 +1,9 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { Link, Clearfix, LoadingButton, InputField, Error, PickerField} from '../../../common/components';
+import { 
+    Link, Clearfix, LoadingButton, 
+    InputField, Error, PickerField, ImageUploader
+} from '../../../common/components';
 import { ValidationService, ProfileService } from '../../../common/services';
 import { WithForm } from '../../../common/HOC';
 import {labels} from '../../../common/constants';
@@ -86,7 +89,26 @@ const PersonalForm = (props) => {
                         component={InputField} 
                         label="Email Of Owner" />
                     }
-                    <Clearfix/>
+                    <Field 
+                        validate={[ValidationService.url]}
+                        name="uploadPic"
+                        component={ImageUploader} 
+                        label="Select Profile" />
+                    <Field 
+                        validate={[ValidationService.url]}
+                        name="facebook"
+                        component={InputField} 
+                        label="Facebook Link" />
+                    <Field 
+                        validate={[ValidationService.url]}
+                        name="twitter"
+                        component={InputField} 
+                        label="Twitter Link" />
+                    <Field 
+                        validate={[ValidationService.url]}
+                        name="google"
+                        component={InputField} 
+                        label="Google Link" />
                     <LoadingButton
                         onPress={props.handleSubmit} 
                         disabled={submitDisabled} 

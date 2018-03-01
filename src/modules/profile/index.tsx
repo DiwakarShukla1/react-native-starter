@@ -14,7 +14,7 @@ class ProfitoWizard extends Component {
             let currentPosition;
             const response = await ProfileService.getStep();
             if(response.success) {
-               currentPosition = response.data.stepCompleted+1;
+               currentPosition = response.data.stepCompleted;
             }else {
                currentPosition=0
             }

@@ -3,7 +3,6 @@ import { ProfileObj, StepObj } from "../types";
 
 const obj = {
     updateProfile (body: ProfileObj) {
-        console.log("user profile",body)
         const url = 'profile';
         return HttpService.put(url, body);
     },
