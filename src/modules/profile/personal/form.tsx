@@ -12,6 +12,7 @@ const pickerItems = [{label:"Rented",value:"Rented"},{label:"Owned",value:"Owned
 const PersonalForm = (props) => {
     const { handleSubmit, pristine, loading, invalid, serverError } = props;
     const submitDisabled = pristine || loading || invalid;
+    const values = props.data && props.data.values;
 
     return(
         <Container>
@@ -65,22 +66,26 @@ const PersonalForm = (props) => {
                         name="stateOfResidence"
                         label="State of Residence"
                         component={PickerField}
-                        /> 
-                    <Field 
+                        />
+                    {values && values.stateOfResidence === "Rented" && 
+                        <Field 
                         validate={[ValidationService.required]}
                         name="nameOfOwner"
                         component={InputField} 
                         label="Name of Owner" />
-                    <Field 
+                    }
+                    { values && values.stateOfResidence === "Rented" && <Field 
                         validate={[ValidationService.required]}
                         name="contactNumberOfOwner"
                         component={InputField} 
                         label="Contact Number of Owner" />
-                    <Field 
+                    }
+                    { values && values.stateOfResidence === "Rented" && <Field 
                         validate={[ValidationService.required]}
                         name="emailOfOwner"
                         component={InputField} 
                         label="Email Of Owner" />
+                    }
                     <Clearfix/>
                     <LoadingButton
                         onPress={props.handleSubmit} 
