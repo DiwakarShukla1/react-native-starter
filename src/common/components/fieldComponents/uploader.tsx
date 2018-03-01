@@ -15,13 +15,10 @@ class ImageUploader extends Component {
                               </TouchableOpacity>
         const selectedImg = this.state.selectedFiled ? <Image source={this.state.uploadedUrl}  style={{height:100,width:100}}/> : null
         return (
-            <View>
-                <Item stackedLabel>
-                    <Label>Select Image</Label>
-                    {showUpload}
-                </Item>
-                {selectedImg}
-            </View>
+            <Item stackedLabel>
+                <Label>Select Image</Label>
+                {showUpload}
+            </Item>
         );
     }
 
