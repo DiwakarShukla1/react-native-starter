@@ -8,10 +8,9 @@ interface Props {
     onSuccess:()=>{};
 }
 class FamilyInfo extends Component<Props> {
-    state={ modalVisible:undefined,familyMembers:[],showLoader:false}
+    state={ modalVisible:undefined,familyMembers:[],showLoader:true,member:{id:null}}
     
     componentWillMount() {
-        this.setState({showLoader:true});
         this.fetchFamilyMembers()
     }
 
@@ -22,7 +21,7 @@ class FamilyInfo extends Component<Props> {
                 this.setState({
                     familyMembers:response.data,
                     showLoader:false,
-                    modalVisible:response.data ? response.data.length!=0 : true 
+                    modalVisible:response.data.length==0
                 });
             }else {
                 this.setState({
@@ -39,6 +38,8 @@ class FamilyInfo extends Component<Props> {
     render() {
         return (
             <ModalForm
+                id={this.state.member.id}
+                memberDetail={this.state.member}
                 onEditPress={this.handleEdit.bind(this)}
                 noDataMessage="No Family Members Found"
                 showLoader={this.state.showLoader}
@@ -50,9 +51,16 @@ class FamilyInfo extends Component<Props> {
         );
     }
 
-    handleEdit(id:string) {
-        console.log("edit this",id);
+    handleEdit(obj:any) {
+        console.log("edit this",obj);
+        const {dateOfBirth, firstName, gradeOfSchool, isStudent, lastName, nameOfSchool, relationWithYou, _id} = obj;
+        const member = {
+            dateOfBirth, firstName, gradeOfSchool, isStudent, lastName, nameOfSchool, relationWithYou, 
+            id:_id
+        }
+        this.setState({member,modalVisible:true});
     }
+
     handleModalClose() {
         const modalVisible = !this.state.modalVisible
         this.setState({modalVisible});

@@ -17,16 +17,21 @@ interface Props {
 
 const ModalForm = (props:Props) => {
     console.log("props received",props)
-    return(
-       <Container>
-           <Content>
-                <FamilyList noDataMessage={props.noDataMessage} 
-                data={props.familyMembers} 
-                onEditPress={props.onEditPress}
-                showLoader={props.showLoader}/>
-           </Content>
-       </Container>
-    );
+    const modal = props.modalVisible ? <Modal modalVisible={props.modalVisible}
+                                              title="Family Member Details"  
+                                              onCloseModal={props.onCloseModal}>
+                                             <Form   
+                                                id={props.id}
+                                                initialValues={{...props.memberDetail}}                                                                                                
+                                                />
+                                       </Modal>                                       
+                                     :<Content> 
+                                        <FamilyList noDataMessage={props.noDataMessage} 
+                                        data={props.familyMembers} 
+                                        onEditPress={props.onEditPress}
+                                        showLoader={props.showLoader}/>
+                                        </Content>
+    return modal;
 };
 
 export default ModalForm;

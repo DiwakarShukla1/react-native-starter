@@ -12,7 +12,7 @@ const FamilyList = (props)=>{
                 <View style={{flexDirection:'row'}}>
                     <TextComponent text={`${props.firstName} ${props.lastName}`}/>
                     <TextComponent text={`${props.relationWithYou}`}/>
-                    <EditFamily onEditPress={()=>props.onEditPress(props.id)}/>
+                    <EditFamily onEditPress={()=>props.onEditPress(props)}/>
                 </View>
             </CardItem>
         </Card>
