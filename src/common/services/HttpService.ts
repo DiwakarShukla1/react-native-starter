@@ -1,6 +1,6 @@
 import { ServerResponse } from '../types/index';
 const BASE_URL = 'http://192.168.0.112:3001/';
-import { AsyncStorage } from "react-native";
+import { AsyncStorage } from 'react-native';
 
 enum METHODS {
     GET = 'GET',
@@ -9,22 +9,24 @@ enum METHODS {
     DELETE = 'DELETE'
 }
 
-const doHttpCall = async (url: string, method: string, body?: object, doNotUseToken?: boolean): Promise<ServerResponse> => {
+const doHttpCall = async (url: string, method: string, body?: object, doNotUseToken?: boolean, isForUpload =false): Promise<ServerResponse> => {
     const basicAuth = !doNotUseToken ? await AsyncStorage.getItem('apiToken') : undefined;
     const NEW_URL = BASE_URL + url;
 
     return new Promise((resolve, reject) => {
-        const options: any = { method : method };
+        let options = {method};
 
         if (body) {
-            options.body = JSON.stringify(body);
+            options.body = isForUpload ? body : JSON.stringify(body);
         }
 
         options.headers = new Headers();
-        options.headers.append('Content-Type', 'application/json');
+        if (!isForUpload) {
+            options.headers.append('Content-Type', 'application/json');
+        }
 
         if (basicAuth) {
-            options.headers.append('Authorization', basicAuth);
+            options.headers.append("Authorization", basicAuth);
         }
 
         fetch(NEW_URL, options)
@@ -33,7 +35,7 @@ const doHttpCall = async (url: string, method: string, body?: object, doNotUseTo
         })
         .then((response) => {
             resolve(response);
-        }).catch((message) => {
+        }).catch((message)=> {
             reject(message);
         });
     });
@@ -51,7 +53,13 @@ const obj = {
     },
     delete (url: string) {
         return doHttpCall(url, METHODS.DELETE);
-    }
+    },
+    async uploadResume (url: string, file: Blob) {
+        const body = new FormData();
+        body.append('file', file);
+        // body.append('data', data);
+        return doHttpCall(url, METHODS.POST, body, true, true);
+    },
 };
 
 export default obj;
