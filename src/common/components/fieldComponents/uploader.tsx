@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
-import {View, Text, Item, Label} from 'native-base';
+import {View, Text, Item, Label, Image} from 'native-base';
 import ImagePicker from 'react-native-image-picker';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { TouchableOpacity } from 'react-native';
+import {UploadService} from '../../services';
 
 class ImageUploader extends Component {
     state={uploadedUrl:'',selectedFiled:false}
     render() {
         const showUpload = this.state.selectedFiled 
-                            ? <Text>Image</Text> 
-                            : <TouchableOpacity onPress={()=>this.handleUploadPress.bind(this)}>
-                                <FontAwesome name="upload" size={12}/>
+                            ? null
+                            : <TouchableOpacity onPress={this.handleUploadPress.bind(this)}>
+                                <FontAwesomeIcon name="upload" size={12}/>
                               </TouchableOpacity>
+        const selectedImg = this.state.selectedFiled ? <Image source={this.state.uploadedUrl}  style={{height:100,width:100}}/> : null
         return (
-            <Item stackedLabel>
-                <Label>Select Image</Label>
-                {showUpload}
-            </Item>
+            <View>
+                <Item stackedLabel>
+                    <Label>Select Image</Label>
+                    {showUpload}
+                </Item>
+                {selectedImg}
+            </View>
         );
     }
 
@@ -27,8 +32,8 @@ class ImageUploader extends Component {
               skipBackup: true,
               path: 'images'
             }
-          };
-        ImagePicker.showImagePicker(options, (response) => {            
+        };
+        ImagePicker.showImagePicker(options, async (response) => {            
             if (response.didCancel) {
             }
             else if (response.error) {
@@ -36,10 +41,24 @@ class ImageUploader extends Component {
             else if (response.customButton) {
             }
             else {
-             const source = { uri: 'data:image/jpeg;base64,' + response.data };          
-              console.log("uploaded",source)
+               this.uploadImage(response)
             }
-          });
+        });
+    }
+    async uploadImage(response) {
+        //let source = { uri: response.uri };
+        //this.setState({uploadedUrl: source, selectedFiled:true});
+        const obj = {
+            uri : response.uri,
+            type : response.type,
+            name : response.fileName
+        };
+        // try {            
+        //     const uploadResponse = await UploadService.uploadFile(obj)
+        //     console.log("response",uploadResponse)  
+        // } catch (error) {
+        //     console.log("upload error",error)
+        // }
     }
 }
 

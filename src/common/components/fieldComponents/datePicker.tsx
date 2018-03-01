@@ -13,13 +13,13 @@ class FormDatePicker extends Component {
         const selectedDate = input.value ? input.value :"Select DOB";
 
         return (
-            <View style={{marginLeft:16,marginTop:10}}>
+            <Item stackedLabel>
                 <Label>{label}</Label>
-                <TouchableOpacity onPress={this.handleDatePicker.bind(this)}>
-                    <Text style={{marginTop:8,color: selectedDate=="Select DOB" ? Colors.colorGray : '#000'}}>{selectedDate}</Text>
+                <TouchableOpacity style={{paddingTop:12,alignSelf:'flex-start'}} onPress={this.handleDatePicker.bind(this)}>
+                    <Text style={{color: selectedDate=="Select DOB" ? Colors.colorGray : '#000'}}>{selectedDate}</Text>
                 </TouchableOpacity>
                 {errorComponent}
-            </View>
+            </Item>
         );
     }
     async handleDatePicker() {

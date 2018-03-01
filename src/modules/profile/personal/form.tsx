@@ -1,6 +1,9 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { Link, Clearfix, LoadingButton, InputField, Error, PickerField} from '../../../common/components';
+import { 
+    Link, Clearfix, LoadingButton, 
+    InputField, Error, PickerField, ImageUploader
+} from '../../../common/components';
 import { ValidationService, ProfileService } from '../../../common/services';
 import { WithForm } from '../../../common/HOC';
 import {labels} from '../../../common/constants';
@@ -81,6 +84,11 @@ const PersonalForm = (props) => {
                         name="emailOfOwner"
                         component={InputField} 
                         label="Email Of Owner" />
+                    <Field 
+                        validate={[ValidationService.url]}
+                        name="uploadPic"
+                        component={ImageUploader} 
+                        label="Select Profile" />
                     <Field 
                         validate={[ValidationService.url]}
                         name="facebook"
