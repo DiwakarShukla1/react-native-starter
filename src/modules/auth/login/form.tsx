@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Field } from 'redux-form';
-import { Link, Clearfix, LoadingButton, InputField, Error } from '../../../common/components';
+import { Link, ClearFix, LoadingButton, InputField, Error } from '../../../common/components';
 import { ValidationService, AuthService } from '../../../common/services';
 import { WithForm } from '../../../common/HOC';
 import { Form, Button, Text } from "native-base";
@@ -39,9 +39,9 @@ const LoginForm = (props: Props) => {
                 component={InputField} 
                 label="Password"
             />
-            <Clearfix/>
+            <ClearFix/>
             <Link onPress={props.onForgotPassword}> Forgot Password ? </Link>
-            <Clearfix/> 
+            <ClearFix/> 
             <LoadingButton
                 onPress={props.handleSubmit} 
                 disabled={submitDisabled} 
@@ -49,7 +49,7 @@ const LoginForm = (props: Props) => {
                 >
                 Login
             </LoadingButton>
-            <Clearfix/>
+            <ClearFix/>
             <Button onPress={props.onRegister} bordered block style={{marginHorizontal: 16}}>
                 <Text>Register</Text> 
             </Button>

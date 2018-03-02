@@ -4,6 +4,7 @@
       "jsx": "react",
       "noEmit": true,
       "moduleResolution": "node",
+      "experimentalDecorators" : true,
     },
     "exclude": [
       "node_modules"

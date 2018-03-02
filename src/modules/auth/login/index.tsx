@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text, Keyboard} from 'react-native';
 import { headers } from "../../../common/config";
-import { Clearfix, LoadingButton } from "../../../common/components";
+import { ClearFix, LoadingButton } from "../../../common/components";
 import { Container, Content } from "native-base";
 import LoginForm from "./form";
 import {NavigationActions} from 'react-navigation';
@@ -60,7 +60,7 @@ export default class Login extends React.Component <Props, State> {
         return (
             <Container>
                 <Content>
-                    <Clearfix/>
+                    <ClearFix/>
                     <LoginForm 
                         onForgotPassword={this.handleOnForgotPassword}
                         onRegister={this.handleOnRegister}  

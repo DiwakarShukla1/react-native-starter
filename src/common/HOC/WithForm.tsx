@@ -7,8 +7,9 @@ const Snackbar = SnackBar.default;
 interface Props {
     data: any;
     header: string;
-    onSuccess: () => {};
+    onSuccess: (message?: any) => {};
     invalid?: boolean;
+    id?: string;
 }
 
 interface State {
@@ -48,7 +49,6 @@ function WithForm (WrapComponent: any, formName: string, createApi: Function, up
                     Snackbar.show({title : result.message, duration : Snackbar.LENGTH_INDEFINITE , action : { title : "DISMISS", color : "green" }});
                 }
             } catch (error) {
-                console.log("form error",error)
                 Snackbar.show({title : error.message, duration : Snackbar.LENGTH_INDEFINITE , action : { title : "DISMISS", color : "green" }});                
             } finally {
                 this.setState({submitting : false});

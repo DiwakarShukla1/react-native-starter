@@ -3,7 +3,7 @@ import {View} from 'react-native';
 import {Container, Content, Form, Button, Text} from 'native-base';
 import {WithForm} from '../../../common/HOC';
 import {Field} from 'redux-form';
-import {InputField, Clearfix, LoadingButton} from '../../../common/components';
+import {InputField, ClearFix, LoadingButton} from '../../../common/components';
 import {AuthService, ValidationService} from '../../../common/services';
 import {labels} from '../../../common/constants';
 
@@ -21,7 +21,7 @@ const ForgotForm = (props) => {
                         component={InputField} 
                         keyboardType="email-address"
                         label="Email" />
-                    <Clearfix/> 
+                    <ClearFix/> 
                     <LoadingButton
                         onPress={() => props.handleSubmit(props.invalid)} 
                         disabled={false} 
@@ -29,7 +29,7 @@ const ForgotForm = (props) => {
                         >
                         {labels.btnLabel.Submit}
                     </LoadingButton>
-                    <Clearfix/>
+                    <ClearFix/>
                     <Button onPress={()=>props.onLoginPress()} bordered block style={{marginHorizontal: 16}}>
                         <Text>{labels.btnLabel.BackToLogin}</Text> 
                     </Button>

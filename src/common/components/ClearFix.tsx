@@ -5,7 +5,7 @@ interface Props {
 
 }
 
-const Clearfix = (props: Props) => {
+const ClearFix = (props: Props) => {
     return (
         <View style={{ marginBottom : 16 }}>
             
@@ -13,4 +13,4 @@ const Clearfix = (props: Props) => {
     );
 };
 
-export default Clearfix;
+export default ClearFix;

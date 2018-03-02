@@ -4,7 +4,7 @@ import {Field} from 'redux-form';
 import {WithForm} from '../.././../common/HOC';
 import {View} from 'react-native';
 import {ValidationService, AuthService} from '../../../common/services';
-import {InputField, Clearfix, LoadingButton} from '../../../common/components';
+import {InputField, ClearFix, LoadingButton} from '../../../common/components';
 import {labels} from '../../../common/constants';
 
 const ResetForm = (props)=>{
@@ -34,7 +34,7 @@ const ResetForm = (props)=>{
                         secureTextEntry={true}
                         label="Confirm Password"/>
                 </Form>
-                <Clearfix/>
+                <ClearFix/>
                 <LoadingButton
                         onPress={props.handleSubmit} 
                         disabled={submitDisabled} 
@@ -42,7 +42,7 @@ const ResetForm = (props)=>{
                         >
                         {labels.btnLabel.ResetPassword}
                 </LoadingButton>
-                <Clearfix/>
+                <ClearFix/>
                 <Button onPress={()=>props.onLoginPress()} bordered block style={{marginHorizontal: 16}}>
                         <Text>{labels.btnLabel.BackToLogin}</Text> 
                 </Button>

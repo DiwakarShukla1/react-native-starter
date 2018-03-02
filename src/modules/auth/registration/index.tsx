@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { headers } from "../../../common/config";
-import { Clearfix, LoadingButton } from "../../../common/components";
+import { ClearFix, LoadingButton } from "../../../common/components";
 import { Container, Content, Button, Text } from "native-base";
 import RegistrationForm from "./form";
 import RegistrationSuccess from "./success";
@@ -49,9 +49,9 @@ export default class Registration extends React.Component <Props, State> {
         return (
             <Container>
                 <Content>
-                    <Clearfix/>
+                    <ClearFix/>
                     {registration}
-                    <Clearfix/>
+                    <ClearFix/>
                     <Button onPress={this.handleOnLogin} bordered block style={{marginHorizontal: 16}}>
                         <Text>Back to Login</Text> 
                     </Button>

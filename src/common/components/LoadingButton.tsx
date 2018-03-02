@@ -5,7 +5,7 @@ import { ActivityIndicator } from "react-native";
 interface Props {
     isLoading? : boolean;
     children: any;
-    onPress: Function;
+    onPress: ()=> {};
     disabled: boolean;
 }
 

@@ -1,8 +1,9 @@
 import { StackNavigator } from "react-navigation";
 import { Login, Registration, ForgotPassword, ResetPassword} from "./modules/auth";
-import ProfileWizard from './modules/profile';
+import PlayGround from './playGround';
 
 const RootStack = StackNavigator({
+    
     Login: {
         screen: Login,
     },
@@ -14,9 +15,6 @@ const RootStack = StackNavigator({
     },
     ResetPassword : {
         screen:ResetPassword
-    },
-    ProfileWizard : {
-        screen: ProfileWizard
     }
 });
 
